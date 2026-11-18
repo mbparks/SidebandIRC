@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Sideband · 2600net IRC</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#conversation">Skip to conversation</a>
+  <header class="mast">
+    <div class="brand"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Sideband</span><span class="product">IRC terminal</span></div>
+    <div class="headTools"><button id="commands" class="quiet"><span class="keyicon" aria-hidden="true">/</span>Commands</button><button id="display" class="quiet"><span class="sun" aria-hidden="true">☼</span>Display</button></div>
+  </header>
+  <main class="case">
+    <div class="desk">
+      <aside id="sidebar" class="rail" aria-label="IRC workspace">
+        <section class="net"><h2 class="eyebrow">Network</h2>
+          <div class="netline"><span class="rack" aria-hidden="true"><i></i><i></i></span><div><strong>2600net</strong><small>irc.2600.net</small></div></div>
+        </section>
+        <nav aria-label="Conversations">
+          <div class="railTitle"><h2 class="eyebrow">Channels</h2><button id="addChannel" class="tiny" title="Join a channel" aria-label="Join a channel" disabled>+</button></div>
+          <div id="channels"></div>
+          <div id="privateSection" hidden><h2 class="eyebrow subhead">Direct messages</h2><div id="privates"></div></div>
+          <h2 class="eyebrow subhead">Activity</h2><button id="serverTab" class="tab"><span class="logIcon" aria-hidden="true">›_</span><span>Server log</span></button>
+        </nav>
+        <section class="linkinfo"><h2 class="eyebrow">Connection</h2>
+          <dl><div><dt>Protocol</dt><dd>IRC</dd></div><div><dt>Browser link</dt><dd>WSS · 443</dd></div><div><dt>IRC target</dt><dd>TLS · 6697</dd></div></dl>
+        </section>
+      </aside>
+      <section class="channel" id="conversation" tabindex="-1" aria-label="Active conversation">
+        <header class="channelHead"><button id="navToggle" class="tiny mobileOnly" aria-label="Show conversations" aria-controls="sidebar" aria-expanded="false">☰</button>
+          <div class="channelName"><span id="viewGlyph" class="hash" aria-hidden="true">#</span><h1 id="viewName">defcon</h1></div>
+          <button id="members" class="quiet members" disabled><span class="peopleIcon" aria-hidden="true"></span>Members<span id="memberCount"></span></button>
+        </header>
+        <div id="topic" class="topic" hidden></div>
+        <div id="notices" role="status" hidden></div>
+        <div id="entry" class="entry">
+          <div class="entryInner">
+            <div class="crtStage" aria-hidden="true"><i class="br tl"></i><i class="br tr"></i><img src="terminal.png" alt="" width="252" height="158"><i class="br bl"></i><i class="br brt"></i></div>
+            <h2>Join <em>#defcon</em></h2>
+            <p>Choose a nickname to chat on 2600net.</p>
+            <form id="connectForm" class="connectForm"><label for="nickname">Nickname</label>
+              <div class="formRow"><input id="nickname" name="nickname" maxlength="30" autocomplete="off" spellcheck="false" autocapitalize="none" required><button id="connect" class="primary" type="submit">Connect <span aria-hidden="true">→</span></button></div>
+            </form>
+            <div id="connectFeedback" class="feedback" role="status"></div>
+          </div>
+        </div>
+        <div id="chat" class="chat" hidden><div id="history" role="log" aria-label="Conversation history" aria-live="polite" aria-relevant="additions"></div><div id="emptyChat" class="emptyChat"></div></div>
+        <form id="composer" class="composer" hidden><label id="composeLabel" class="sr" for="message">Message</label><input id="message" type="text" autocomplete="off" maxlength="1000" placeholder="Message #defcon" aria-labelledby="composeLabel"><button class="primary" id="send" type="submit">Send <span aria-hidden="true">↑</span></button></form>
+        <div id="sessionActions" hidden><button id="roomAction" class="secondary"></button></div>
+        <div id="networkHelp" class="networkHelp" hidden>
+          <a href="https://scuttled.net/#irc" target="_blank" rel="noopener noreferrer">Open 2600net web chat ↗</a>
+          <span>Set the channel to <code>#defcon</code>.</span>
+          <a href="ircs://irc.2600.net:6697/%23defcon">Open in an installed IRC client</a>
+        </div>
+        <div class="statusbar"><div class="status"><i id="statusLamp"></i><span id="statusText" role="status">Offline</span><span id="identity"></span></div><button id="stop" hidden>Disconnect</button></div>
+      </section>
+    </div>
+    <footer><span><b class="footMark" aria-hidden="true">▰</b> Green Shoe Garage</span><span>Sideband <b>v1.1.0</b></span></footer>
+  </main>
+  <dialog id="modal" aria-labelledby="dialogTitle"><div class="modalHead"><h2 id="dialogTitle"></h2><button id="closeModal" class="tiny" aria-label="Close dialog">×</button></div><div id="dialogBody"></div></dialog>
+  <noscript>Enable JavaScript to use the IRC terminal.</noscript>
+</body>
+</html>
